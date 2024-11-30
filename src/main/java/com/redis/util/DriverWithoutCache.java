@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class Driver {
+public class DriverWithoutCache {
 
     final Long id;
     final String driverName;
