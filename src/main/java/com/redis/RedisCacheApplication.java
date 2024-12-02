@@ -8,6 +8,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 @SpringBootApplication
 @EnableCaching
@@ -34,12 +35,18 @@ public class RedisCacheApplication {
                     }
 
                     if ("y".equals(redisYesNo)) {
-                        System.out.println("----------");
-                        System.out.println("Id 1: " + driverService.getDriverWithCacheById(1L).getDriverName());
-                        System.out.println("Id 2: " + driverService.getDriverWithCacheById(2L).getDriverName());
-                        System.out.println("Id 3: " + driverService.getDriverWithCacheById(3L).getDriverName());
-                        System.out.println("Id 2: " + driverService.getDriverWithCacheById(2L).getDriverName());
-                        System.out.println("----------");
+                        try {
+                            System.out.println("----------");
+                            System.out.println("Id 1: " + driverService.getDriverWithCacheById(1L).getDriverName());
+                            System.out.println("Id 2: " + driverService.getDriverWithCacheById(2L).getDriverName());
+                            System.out.println("Id 3: " + driverService.getDriverWithCacheById(3L).getDriverName());
+                            System.out.println("Id 2: " + driverService.getDriverWithCacheById(2L).getDriverName());
+                            System.out.println("----------");
+                        } catch (Exception e) {
+                            System.out.println("Error: Redis is not open or another issue occurred.");
+                            System.exit(1);
+                        }
+
                     } else {
                         System.out.println("----------");
                         System.out.println("Id 1: " + driverService.getDriverWithoutCacheById(1L).getDriverName());
