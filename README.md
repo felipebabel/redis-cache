@@ -36,7 +36,7 @@ mvn clean install
 ## Execute
 
 To run the microservice, you can either use the following Maven command
-```bash
+```task
 mvn spring-boot:run
 ```
 Or run the main class directly from your IDE:
