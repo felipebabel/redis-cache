@@ -5,14 +5,14 @@ import com.redis.util.DriverWithCache;
 import com.redis.util.DriverWithoutCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/api/v1/drivers")
 public class DriverController {
 
@@ -33,7 +33,7 @@ public class DriverController {
         return ResponseEntity.ok(driverWithCacheList);
     }
 
-    @GetMapping
+    @GetMapping("/withoutCache")
     private ResponseEntity<List<DriverWithoutCache>> getAllDriverWithoutCache() throws InterruptedException {
         List<DriverWithoutCache> driverWithCacheList = new ArrayList<>();
         driverWithCacheList.add(driverService.getDriverWithoutCacheById(1L));
