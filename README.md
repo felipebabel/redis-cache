@@ -29,7 +29,7 @@ mvn clean install
 
 1. It's necessary to install the Lombok Plugin in settings.
 
-![img_2.png](img_2.png)
+![img_2.png](assets/img_2.png)
 
 2. Java 17 must be installed and configured on your machine
 ---
@@ -47,7 +47,7 @@ The API will be accessible at http://localhost:8080
 
 Postman request example:
 
-![img_1.png](img_1.png)
+![img_1.png](assets/img_1.png)
 
 ---
 ## Documentation

@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/drivers")
-public class DriverController {
+public class DriverController implements DriverApi {
 
     private final DriverService driverService;
 
@@ -23,8 +23,9 @@ public class DriverController {
         this.driverService = driverService;
     }
 
+    @Override
     @GetMapping("/cache")
-    private ResponseEntity<List<DriverWithCache>> getAllDriverWithCache() throws InterruptedException {
+    public ResponseEntity<List<DriverWithCache>> getAllDriverWithCache() throws InterruptedException {
         List<DriverWithCache> driverWithCacheList = new ArrayList<>();
         driverWithCacheList.add(driverService.getDriverWithCacheById(1L));
         driverWithCacheList.add(driverService.getDriverWithCacheById(2L));
@@ -33,8 +34,9 @@ public class DriverController {
         return ResponseEntity.ok(driverWithCacheList);
     }
 
+    @Override
     @GetMapping("/withoutCache")
-    private ResponseEntity<List<DriverWithoutCache>> getAllDriverWithoutCache() throws InterruptedException {
+    public ResponseEntity<List<DriverWithoutCache>> getAllDriverWithoutCache() throws InterruptedException {
         List<DriverWithoutCache> driverWithCacheList = new ArrayList<>();
         driverWithCacheList.add(driverService.getDriverWithoutCacheById(1L));
         driverWithCacheList.add(driverService.getDriverWithoutCacheById(2L));
