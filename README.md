@@ -1,4 +1,4 @@
-# Redis Cache
+# 🚀 Redis Cache
 
 ---
 The purpose of this project is to test caching using Redis.
@@ -7,50 +7,83 @@ and optimize overall application performance.
 
 Technologies used: Java 17, Spring Boot, Redis.
 
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Execute](#execute)
-- [Documentation](#documentation)
 ---
-## Installation
+## 🛠️ Installation
 
-1. Clone the repository:
+Clone the repository:
 
 ```bash
 git clone https://github.com/felipebabel/redis-cache
 ```
 
-2. Install dependencies with Maven
+Build the project with Maven:
 ```bash
 mvn clean install
 ```
 ---
-## Configuration
 
-1. It's necessary to install the Lombok Plugin in settings.
+## 🐳 Docker Setup
+Redis must be running locally for the application to work. You can start a Redis container using Docker:
+```bash
+docker run --name redis -p 6379:6379 -d redis
+```
+
+This command pulls the latest Redis image (if not already available) and runs it on port 6379.
+
+Make sure Docker is installed and running on your machine.
+
+---
+## ⚙️ Configuration
+- Java 17
+
+- Lombok Plugin: Make sure the Lombok plugin is installed and enabled in your IDE.
 
 ![img_2.png](assets/img_2.png)
 
-2. Java 17 must be installed and configured on your machine
 ---
-## Execute
+## ▶️ Running the Application
 
-To run the microservice, you can either use the following Maven command
-```task
+You can start the application in one of two ways:
+
+Option 1: Using Maven
+```bash
 mvn spring-boot:run
 ```
-Or run the main class directly from your IDE:
-[RedisCacheApplication.java](src/main/java/com/redis/RedisCacheApplication.java)
+Option 2: From your IDE
+Run the main class: [RedisCacheApplication.java](src/main/java/com/redis/RedisCacheApplication.java)
 
-   
-The API will be accessible at http://localhost:8080
+--- 
 
-Postman request example:
+## 📡 API Usage
 
-![img_1.png](assets/img_1.png)
+- Example cURL request to test the caching endpoint:
+
+```bash
+curl --location 'http://localhost:8080/api/v1/drivers/cache'
+```
+This will trigger a caching mechanism that stores and retrieves driver data using Redis.
+
+
+- Example cURL request to test the endpoint without caching:
+```bash
+curl --location 'localhost:8080/api/v1/drivers/withoutCache'```
+```
+
+This endpoint simulates 1 second of delay per driver record fetched, mimicking a slow data source.
+
+It’s useful for comparing performance with and without Redis caching.
+
+
 
 ---
-## Documentation
+
+
+## 🎥 Demo
+
+![img_1.png](assets/gif/cache.gif)
+
+---
+## 📚 Documentation
+
 Interactive API documentation is available via Swagger UI.
-Access it here:
 [Swagger UI](http://localhost:8080/swagger-ui/index.html#/)
